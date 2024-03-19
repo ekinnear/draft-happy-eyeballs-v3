@@ -5,10 +5,10 @@
 Network Working Group                                           T. Pauly
 Internet-Draft                                                 Apple Inc
 Intended status: Informational                               D. Schinazi
-Expires: 29 July 2024                                            N. Jaju
+Expires: 20 September 2024                                       N. Jaju
                                                             K. Ishibashi
                                                               Google LLC
-                                                         26 January 2024
+                                                           19 March 2024
 
 
     Happy Eyeballs Version 3: Better Connectivity Using Concurrency
@@ -55,7 +55,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 29 July 2024.
+   This Internet-Draft will expire on 20 September 2024.
 
 Copyright Notice
 
@@ -515,10 +515,11 @@ Table of Contents
    synthesis.
 
    When an IPv4 address is passed into the library instead of a
-   hostname, the device queries the network for the NAT64 prefix using
+   hostname, the device SHOULD use PREF64s received from Router
+   Advertisements [RFC8781].  If the network does not provide PREF64s,
+   the device SHOULD query the network for the NAT64 prefix using
    "Discovery of the IPv6 Prefix Used for IPv6 Address Synthesis"
-   [RFC7050], or uses PREF64s received from Router Advertisements
-   [RFC8781].  It then synthesizes an appropriate IPv6 address (or
+   [RFC7050].  It then synthesizes an appropriate IPv6 address (or
    several) using the encoding described in "IPv6 Addressing of IPv4/
    IPv6 Translators" [RFC6052].  The synthesized addresses are then
    inserted into the list of addresses as if they were results from DNS
@@ -679,9 +680,9 @@ Table of Contents
 
    [ECH]      Rescorla, E., Oku, K., Sullivan, N., and C. A. Wood, "TLS
               Encrypted Client Hello", Work in Progress, Internet-Draft,
-              draft-ietf-tls-esni-17, 9 October 2023,
+              draft-ietf-tls-esni-18, 4 March 2024,
               <https://datatracker.ietf.org/doc/html/draft-ietf-tls-
-              esni-17>.
+              esni-18>.
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
