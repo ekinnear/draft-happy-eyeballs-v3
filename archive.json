@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-03-19T00:18:39.833771+00:00",
+  "timestamp": "2024-03-21T00:19:16.675022+00:00",
   "repo": "tfpauly/draft-happy-eyeballs-v3",
   "labels": [
     {
@@ -708,7 +708,7 @@
       "url": "https://github.com/tfpauly/draft-happy-eyeballs-v3/issues/41",
       "state": "OPEN",
       "author": "furry13",
-      "authorAssociation": "NONE",
+      "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "(copying from an email I sent to the authors)\r\n\r\nWith PREF64 being available, some networks might only provide PREF64 and do not use DNS64, as the latter has a number of disadvantages, such as breaking DNSSEC and not working if the host has custom DNS\r\nservers configured.\r\n\r\nSo do you think it's worth adding some text saying that some Ipv6-only\r\nor, more likely, IPv6-mostly networks might only deploy PREF64 w/o DNS64?\r\n\r\nSee https://www.ietf.org/archive/id/draft-link-v6ops-6mops-00.html#name-dns-vs-dns64",
@@ -724,7 +724,7 @@
       "url": "https://github.com/tfpauly/draft-happy-eyeballs-v3/issues/42",
       "state": "OPEN",
       "author": "furry13",
-      "authorAssociation": "NONE",
+      "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "This is an open question I do not have an answer for yet - I guess the arguments can be made for both approaches..\r\n\r\nSo if an IPv6-mostly network provides DNS64, then a dual-stack host talking to an IPv4-only destination would have a choice between:\r\n\r\n* a synthesized IPv6 address which will be routed via NAT64\r\n* a native IPv4 path\r\n\r\n(we have a similar discussion in https://datatracker.ietf.org/doc/draft-link-v6ops-claton/: shall CLAT be enabled if both PLAT and IPv4 are available?)",
@@ -738,15 +738,15 @@
       "id": "I_kwDOKH7CuM6CwCJ5",
       "title": "RFC8781 shall be preferred over RFC7050",
       "url": "https://github.com/tfpauly/draft-happy-eyeballs-v3/issues/43",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "furry13",
-      "authorAssociation": "NONE",
+      "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "In section 8.1 I think instead of \"When an IPv4 address is passed into the library instead of a\r\nhostname, the device queries the network for the NAT64 prefix using\r\n\"Discovery of the IPv6 Prefix Used for IPv6 Address Synthesis\"\r\n[RFC7050], or uses PREF64s received from Router Advertisements\r\n[RFC8781].\"\r\n\r\nthe text should say:\r\n\r\n\"When an IPv4 address is passed into the library instead of a\r\nhostname, the device SHOULD use PREF64s received from Router\r\nAdvertisements [RFC8781], or, the network does not provide PREF64, the\r\nhost SHOULD queries the network for the NAT64 prefix using \"Discovery\r\nof the IPv6 Prefix Used for IPv6 Address Synthesis\" [RFC7050]\"\r\n\r\nThe reason is that PREF64 shall be preferred over RFC7050.\r\n",
       "createdAt": "2024-03-18T23:08:09Z",
-      "updatedAt": "2024-03-18T23:08:09Z",
-      "closedAt": null,
+      "updatedAt": "2024-03-19T04:06:11Z",
+      "closedAt": "2024-03-19T04:06:11Z",
       "comments": []
     }
   ],
@@ -2724,26 +2724,68 @@
       "id": "PR_kwDOKH7CuM5qBO6S",
       "title": "Preferring RFC8781 over RFC7050",
       "url": "https://github.com/tfpauly/draft-happy-eyeballs-v3/pull/44",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "furry13",
-      "authorAssociation": "NONE",
+      "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "The device SHOULD use PREF64 provided by the network, and only use RFC7050 of PREF64 is not available\r\n\r\ncloses #43",
       "createdAt": "2024-03-18T23:17:19Z",
-      "updatedAt": "2024-03-18T23:17:19Z",
+      "updatedAt": "2024-03-19T04:06:10Z",
       "baseRepository": "tfpauly/draft-happy-eyeballs-v3",
       "baseRefName": "main",
       "baseRefOid": "c8bcb7836308a4a9038bbad7aa2944a074dd76b7",
       "headRepository": "furry13/draft-happy-eyeballs-v3",
       "headRefName": "pref64",
       "headRefOid": "10e8e8120061c2ebe220070f74f288d7f9558343",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2024-03-19T04:06:10Z",
+      "mergedAt": "2024-03-19T04:06:10Z",
+      "mergedBy": "tfpauly",
+      "mergeCommit": {
+        "oid": "c9099a35ba20a6bd59a6a6ed998bd776acdf719e"
+      },
       "comments": [],
-      "reviews": []
+      "reviews": [
+        {
+          "id": "PRR_kwDOKH7CuM5z6Vt8",
+          "commit": {
+            "abbreviatedOid": "10e8e81"
+          },
+          "author": "tfpauly",
+          "authorAssociation": "OWNER",
+          "state": "APPROVED",
+          "body": "Great!",
+          "createdAt": "2024-03-19T00:34:27Z",
+          "updatedAt": "2024-03-19T00:34:27Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOKH7CuM5z6Ycj",
+          "commit": {
+            "abbreviatedOid": "10e8e81"
+          },
+          "author": "nidhijaju",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "lgtm, thank you!",
+          "createdAt": "2024-03-19T00:37:47Z",
+          "updatedAt": "2024-03-19T00:37:47Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOKH7CuM5z6pFX",
+          "commit": {
+            "abbreviatedOid": "10e8e81"
+          },
+          "author": "DavidSchinazi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "Great! HEv2 was published before PREF64, glad we have an even better solution for HEv3",
+          "createdAt": "2024-03-19T01:04:04Z",
+          "updatedAt": "2024-03-19T01:04:04Z",
+          "comments": []
+        }
+      ]
     }
   ]
 }
