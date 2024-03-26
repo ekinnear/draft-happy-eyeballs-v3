@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-03-24T00:20:59.655703+00:00",
+  "timestamp": "2024-03-26T00:18:10.268907+00:00",
   "repo": "tfpauly/draft-happy-eyeballs-v3",
   "labels": [
     {
@@ -713,7 +713,7 @@
       "labels": [],
       "body": "(copying from an email I sent to the authors)\r\n\r\nWith PREF64 being available, some networks might only provide PREF64 and do not use DNS64, as the latter has a number of disadvantages, such as breaking DNSSEC and not working if the host has custom DNS\r\nservers configured.\r\n\r\nSo do you think it's worth adding some text saying that some Ipv6-only\r\nor, more likely, IPv6-mostly networks might only deploy PREF64 w/o DNS64?\r\n\r\nSee https://www.ietf.org/archive/id/draft-link-v6ops-6mops-00.html#name-dns-vs-dns64",
       "createdAt": "2024-03-18T23:01:03Z",
-      "updatedAt": "2024-03-22T03:03:44Z",
+      "updatedAt": "2024-03-25T18:23:43Z",
       "closedAt": null,
       "comments": [
         {
@@ -722,6 +722,20 @@
           "body": "I think we need to clarify that clients need to send an A query in addition to a AAAA query if PREF64 is available, to ensure that the network doesn't need to run DNS64.",
           "createdAt": "2024-03-22T03:03:44Z",
           "updatedAt": "2024-03-22T03:03:44Z"
+        },
+        {
+          "author": "DavidSchinazi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Maybe we treat this scenario similar to how we handled [hostnames with broken AAAA records in HEv2](https://www.rfc-editor.org/rfc/rfc8305#section-7.2) ? (Try AAAA first and if that doesn't work then try A? Or are we expecting PREF64 without DNS64 to be common and expected?",
+          "createdAt": "2024-03-24T07:07:26Z",
+          "updatedAt": "2024-03-24T07:07:26Z"
+        },
+        {
+          "author": "tfpauly",
+          "authorAssociation": "OWNER",
+          "body": "Jen was trying to be able to remove DNS64 in general, since it breaks DNSSEC, etc, etc",
+          "createdAt": "2024-03-25T18:23:43Z",
+          "updatedAt": "2024-03-25T18:23:43Z"
         }
       ]
     },
